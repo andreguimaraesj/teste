@@ -1,37 +1,6 @@
 axios.defaults.headers.common['Authorization'] = 'TumGlLJcWaHWS4AyRV2AOZCy';
 
 
-let quizz_config = {};
-
-const isTitle = (title) => title.length >= 20 && title.length <= 65;
-const isUrl = (url) => {
-  const regexURL =
-    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
-  return regexURL.test(url);
-};
-const isQuestionNumber = (questionNumber) =>
-  Number(questionNumber) >= 3 && /^[0-9]+$/.test(questionNumber);
-const isLevelNumber = (levelNumber) =>
-  Number(levelNumber) >= 2 && /^[0-9]+$/.test(levelNumber);
-
-const initValidations = {
-  title: isTitle,
-  image: isUrl,
-  questions: isQuestionNumber,
-  levels: isLevelNumber,
-};
-
-function toggleHideElement(element) {
-  element.classList.toggle("hide");
-}
-
-function showCreateQuizzQuestions() {
-  toggleHideElement(document.querySelector(".quizz-init"));
-  toggleHideElement(document.querySelector(".quizz-questions"));
-
-  renderQuestionForms();
-}
-
 function showCreateQuizz() {
   toggleHideElement(document.querySelector(".container-quizz-list"));
   toggleHideElement(document.querySelector(".container-create-quizz"));
@@ -451,6 +420,40 @@ formLevel.onsubmit = (e) => {
     });
   }
 };
+
+
+
+let quizz_config = {};
+
+const isTitle = (title) => title.length >= 20 && title.length <= 65;
+const isUrl = (url) => {
+  const regexURL =
+    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
+  return regexURL.test(url);
+};
+const isQuestionNumber = (questionNumber) =>
+  Number(questionNumber) >= 3 && /^[0-9]+$/.test(questionNumber);
+const isLevelNumber = (levelNumber) =>
+  Number(levelNumber) >= 2 && /^[0-9]+$/.test(levelNumber);
+
+const initValidations = {
+  title: isTitle,
+  image: isUrl,
+  questions: isQuestionNumber,
+  levels: isLevelNumber,
+};
+
+function toggleHideElement(element) {
+  element.classList.toggle("hide");
+}
+
+function showCreateQuizzQuestions() {
+  toggleHideElement(document.querySelector(".quizz-init"));
+  toggleHideElement(document.querySelector(".quizz-questions"));
+
+  renderQuestionForms();
+}
+
 
 function showSuccessQuizz() {
   document.querySelector(".quizz-levels").classList.add("hide");
