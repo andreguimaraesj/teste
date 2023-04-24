@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuzzQuizz</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+      </style>
+</head>
+<body>
+
+
+
+
+        <div id="app">
+          <header class="buzzquizz-header">
+            <h1 onclick="reload()" class="title">BuzzQuizz</h1>
+          </header>
+          <div class="container-pages">
+            <div class="container-quizz-list hide">
+              <section class="no-quizzes">
+                <h2>Você não criou nenhum quizz ainda :(</h2>
+                <button data-test="create-btn"  onclick="directThirdPage()">Criar Quizz</button>
+              </section>
+    
+              <section class="your-quizzes hide">
+                <h2>Seus Quizzes<ion-icon onclick="directThirdPage()" name="add-circle"></ion-icon></h2>
+                <div></div>
+              </section>
+    
+            <section class="all-quizzes">
+              <h2>Todos os Quizzes</h2>
+              <div></div>
+            </section>
+          </div>
+    
+          <div class="container-answer-quizz hide">
+            <div class="quizz-header">
+              <h2 class="quizz-title">Titulo do quizz</h2>
+            </div>
+    
+            <section class="box-quizz-questions">
+              <div class="quizz-question">
+                <div class="question-header">
+                  <h3 class="question-title">Question 1</h3>
+                </div>
+                <div class="question-options">
+                  <div class="question-option">
+                    <img class="option-img" src="./images/cat.png" alt="" />
+                    <span class="option-text">Option 1</span>
+                  </div>
+                  <div class="question-option">
+                    <img class="option-img" src="./images/frog.png" alt="" />
+                    <span class="option-text">Option 2</span>
+                  </div>
+                  <div class="question-option">
+                    <img class="option-img" src="./images/mouse.png" alt="" />
+                    <span class="option-text">Option 3</span>
+                  </div>
+                  <div class="question-option">
+                    <img class="option-img" src="./images/putorius.png" alt="" />
+                    <span class="option-text">Option 4</span>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="quizz-question">
+                <div class="question-header">
+                  <h3 class="question-title">Question 2</h3>
+                </div>
+                <div class="question-options">
+                  <div class="question-option">
+                    <img class="option-img" src="./images/cat.png" alt="" />
+                    <span class="option-text">Option 1</span>
+                  </div>
+                  <div class="question-option">
+                    <img class="option-img" src="./images/frog.png" alt="" />
+                    <span class="option-text">Option 2</span>
+                  </div>
+                  <div class="question-option">
+                    <img class="option-img" src="./images/mouse.png" alt="" />
+                    <span class="option-text">Option 3</span>
+                  </div>
+                  <div class="question-option">
+                    <img class="option-img" src="./images/putorius.png" alt="" />
+                    <span class="option-text">Option 4</span>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="quizz-answer">
+                <div class="answer-header">
+                  <h3 class="answer-title">
+                    <span class="answer-level-score">XX</span>% de acerto:
+                    <span class="answer-level-text">Descricao do nivel</span>
+                  </h3>
+                </div>
+                <div class="answer-body">
+                  <img src="./images/answer.png" alt="" class="answer-img" />
+                  <div class="answer-text">
+                    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Eveniet libero tempora repellendus ea dolore impedit dolores
+                      qui aut, pariatur inventore, corrupti iure veritatis eum non
+                      aperiam rerum illo architecto similique.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="btns-answer-page">
+                <button class="restart-quiz-button buzzquizz-button">
+                  Reiniciar Quiz
+                </button>
+                <button class="back-to-home-button">Voltar para home</button>
+              </div>
+            </section>
+          </div>
+    
+          <div class="container-create-quizz">
+            <div class="quizz-init">
+              <h1 class="title">Comece pelo começo</h1>
+              <form class="buzzquizz-form" id="form-init">
+                <div class="buzzquizz-form-inputs">
+                  <input data-test="title-input" type="text" class="buzzquizz-input" name="title" placeholder="Título do seu quizz" required />
+                  <input data-test="img-input" type="text" class="buzzquizz-input" name="image" placeholder="URL da imagem do seu quizz"
+                    required />
+                  <input data-test="questions-amount-input" type="number" class="buzzquizz-input" name="questions"
+                    placeholder="Quantidade de perguntas do quizz" required />
+                  <input data-test="levels-amount-input" type="number" name="levels" class="buzzquizz-input" placeholder="Quantidade de níveis do quizz"
+                    required />
+                </div>
+                <button data-test="go-create-questions" type="submit" class="buzzquizz-button">
+                  Prosseguir pra criar perguntas
+                </button>
+              </form>
+            </div>
+    
+            <div class="quizz-questions hide">
+              <h1 class="title">Crie suas perguntas</h1>
+              <form class="buzzquizz-form" id="form-question"></form>
+            </div>
+    
+            <div class="quizz-levels hide">
+              <h1 class="title">Agora, decida os níveis!</h1>
+              <form id="form-level"></form>
+            </div>
+    
+            <div class="quizz-success hide">
+              <h1 class="title">Seu quizz está pronto!</h1>
+              <div class="container-img">
+                <div class="img">
+                  <div class="filter"></div>
+                  <img src="" alt="">
+                </div>
+                <h1 class="title"></h1>
+              </div>
+              <div class="button-group">
+                <button onclick="viewQuizz()" class="buzzquizz-button">Acessar Quizz</button>
+                <button onclick="backToHome()" class="buzzquizz-link">Voltar pra home</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!--                      
+
+
+
+
+    <div class="desktop1">
+
+        <div class="header">BuzzQuizz</div>
+
+        <div class="criarNovoQuizz">
+            <div class="textoAindaNaoCriou">Você não criou nenhum quizz ainda :(</div>
+            <button class="botaoCriarNovoQuizz">Criar Quizz</button>
+        </div>
+
+        <div class="boxTodosOsQuizzes">
+            <div class="tituloTodosOsQuizzes">Todos os Quizzes</div>
+            <div class="todosQuizzes"></div>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+                 
+
+    <div class="tela-2">
+        <div class="quiz-selecionado"> 
+            <img src="./assets/Rectangle 36.png"/>
+            <p>Título do Quiz</p>
+        </div>
+        <div class="quiz-perguntas">
+            <div class="quiz-conteudo">
+                <div class="quiz-titulo">
+                    <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div> 
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div>
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div>
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div>
+                </div>
+            </div>
+        </div>
+        <div class="quiz-perguntas">
+            <div class="quiz-conteudo">
+                <div class="quiz-titulo">
+                    <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div>
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div>
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div>
+                </div>
+                <div class="opcao">
+                    <img src="./assets/image 3.png"/>
+                    <div>Gato</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
