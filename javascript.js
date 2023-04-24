@@ -106,7 +106,7 @@ const buzzquizzInput = ({ placeholder, type = "text", dataName, dataTest }) => `
 
 const questionForm = ({ i }) => `
     <div class='container ${
-      i !== 0 ? "" : "close"
+      i === 1 ? "" : "close"
     }' data-identifier="question-form">
       <div class='container-title'>
         <h1 class='title'>Pergunta ${i}</h1>
